@@ -76,13 +76,19 @@ export const buses = [
 
 export const generateSeats = () => {
   const seats = [];
+
   for (let i = 1; i <= 28; i++) {
     let seatType;
 
     if (i > 24) {
       seatType = i % 4 === 1 ? "window" : "side";
     } else {
-      seatType = i % 4 === 1 ? "window" : i % 4 === 2 ? "path" : "side";
+      seatType =
+        i % 4 === 1
+          ? "window"
+          : i % 4 === 2
+            ? "path"
+            : "side";
     }
 
     seats.push({
@@ -91,7 +97,6 @@ export const generateSeats = () => {
       booked: false,
     });
   }
-  return Array(7)
-    .fill()
-    .map((_, row) => seats.slice(row * 4, row * 4 + 4));
+
+  return seats;
 };
